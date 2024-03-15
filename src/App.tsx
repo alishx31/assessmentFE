@@ -8,7 +8,6 @@ const App = () => {
     const [hasProvider, setHasProvider] = useState<boolean | null>(null);
     const initialState = { accounts: [] };
     const [wallet, setWallet] = useState(initialState);
-    const [contract, setContract] = useState();
     const [balance, setBalance] = useState<bigint>(0n);
 
     useEffect(() => {
@@ -149,7 +148,7 @@ const App = () => {
       
 
           const signer = await provider.getSigner();
-          const contractWithSigner = contract.connect(signer);
+          const contractWithSigner:any = contract.connect(signer);
       
           // Call your smart contract method
           const result = await contractWithSigner.balanceOf(wallet.accounts[0]);
@@ -259,11 +258,11 @@ const App = () => {
       
 
           const signer = await provider.getSigner();
-          const contractWithSigner = contract.connect(signer);
+          const contractWithSigner:any = contract.connect(signer);
       
           // Call your smart contract method
           const result = await contractWithSigner.topUp(1000);
-          setBalance(await contractWithSigner.topUp(1000));
+
 
           console.log('Transaction successful:', result);
         } catch (error) {
@@ -371,7 +370,7 @@ const App = () => {
       
 
           const signer = await provider.getSigner();
-          const contractWithSigner = contract.connect(signer);
+          const contractWithSigner:any = contract.connect(signer);
       
           // Call your smart contract method
           const result = await contractWithSigner.withdraw(wallet.accounts[0],1000);
